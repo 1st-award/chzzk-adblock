@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chzzk Adblock
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.1
 // @description  Chzzk Adblock
 // @author       1st_award
 // @match        https://chzzk.naver.com/live/*
