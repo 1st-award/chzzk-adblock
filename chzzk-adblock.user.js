@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chzzk Adblock
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.0.1
 // @description  Chzzk Adblock
 // @author       1st_award
 // @match        https://chzzk.naver.com/live/*
@@ -15,15 +15,14 @@
     'use strict';
 
     // Your code here...
-    const DEBUG_MSG = false;
+    const DEBUG_MSG = true;
     const AD_BLOCK = true;
 
     if (AD_BLOCK) removeAdvertise();
     if (DEBUG_MSG) console.log("Start Chzzk Ads Remover");
 
     function removeAdvertise() {
-        let isRemove = false;
-        const run = setInterval(() => {
+        setInterval(() => {
             const advertise = document.getElementsByClassName('webplayer-internal-core-ad-ui wpc-full wpc-pos-abs wpc-dis-hid')[0];
             const [video, ads] = document.querySelectorAll('video');
             if (advertise !== undefined && advertise.style.display === "block") {
@@ -35,8 +34,6 @@
                     advertise.style.display = "none"
                     if (DEBUG_MSG) console.log("Start Video.");
                     video.play();
-                    if (DEBUG_MSG) console.log("Exit Remover");
-                    clearInterval(run);
                 }
             }
         }, 50);
