@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Chzzk Adblock
 // @namespace    http://tampermonkey.net/
-// @version      1.0.2
+// @version      1.0.3
 // @description  Chzzk Adblock
 // @author       1st_award
-// @match        https://chzzk.naver.com/live/*
+// @match        https://chzzk.naver.com/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @updateURL    https://github.com/1st-award/chzzk-adblock/raw/main/chzzk-adblock.user.js
 // @downloadURL  https://github.com/1st-award/chzzk-adblock/raw/main/chzzk-adblock.user.js
