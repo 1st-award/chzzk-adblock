@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chzzk Adblock
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.0.2
 // @description  Chzzk Adblock
 // @author       1st_award
 // @match        https://chzzk.naver.com/live/*
@@ -15,7 +15,7 @@
     'use strict';
 
     // Your code here...
-    const DEBUG_MSG = true;
+    const DEBUG_MSG = false;
     const AD_BLOCK = true;
 
     if (AD_BLOCK) removeAdvertise();
