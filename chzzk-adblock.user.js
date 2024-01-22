@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Chzzk Adblock
 // @namespace    http://tampermonkey.net/
-// @version      1.0.3
+// @version      1.0.4
 // @description  Chzzk Adblock
 // @author       1st_award
-// @match        https://chzzk.naver.com/*
+// @match        https://chzzk.naver.com/live/*
+// @match        https://chzzk.naver.com/video/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @updateURL    https://github.com/1st-award/chzzk-adblock/raw/main/chzzk-adblock.user.js
 // @downloadURL  https://github.com/1st-award/chzzk-adblock/raw/main/chzzk-adblock.user.js
@@ -27,7 +28,7 @@
             const [video, ads] = document.querySelectorAll('video');
             if (advertise !== undefined && advertise.style.display === "block") {
                 // Detect Advertisement
-                if (ads.paused === false) {
+                if (ads !== undefined) {
                     if (DEBUG_MSG) console.log("Paued Ads.");
                     ads.pause();
                     if (DEBUG_MSG) console.log("Detect Ads. remove");
