@@ -88,7 +88,6 @@
                     const button = cloneListDiv.childNodes[0];
                     const [label, text] = button.childNodes;
                     const [labelImg, title] = label.childNodes;
-                    console.log(title);
                     labelImg.innerHTML = DONATE_SVG;
                     labelImg.setAttribute("viewBox", "0 0 512 512");
                     labelImg.setAttribute("fill", "#959DAE");
