@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         Chzzk Adblock
 // @namespace    http://tampermonkey.net/
-// @version      1.1.1
+// @version      1.2.1
 // @description  Chzzk Adblock
 // @author       1st_award
-// @match        https://chzzk.naver.com/live/*
-// @match        https://chzzk.naver.com/video/*
+// @match        https://chzzk.naver.com/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @updateURL    https://github.com/1st-award/chzzk-adblock/raw/main/chzzk-adblock.user.js
 // @downloadURL  https://github.com/1st-award/chzzk-adblock/raw/main/chzzk-adblock.user.js
@@ -20,7 +19,7 @@
     const DEBUG_MSG = false;
     const AD_BLOCK = true;
     const DONATE_BLOCK = true
-    const DONATE_SVG = `<g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M256 416c114.9 0 208-93.1 208-208S370.9 0 256 0 48 93.1 48 208s93.1 208 208 208zM233.8 97.4V80.6c0-9.2 7.4-16.6 16.6-16.6h11.1c9.2 0 16.6 7.4 16.6 16.6v17c15.5.8 30.5 6.1 43 15.4 5.6 4.1 6.2 12.3 1.2 17.1L306 145.6c-3.8 3.7-9.5 3.8-14 1-5.4-3.4-11.4-5.1-17.8-5.1h-38.9c-9 0-16.3 8.2-16.3 18.3 0 8.2 5 15.5 12.1 17.6l62.3 18.7c25.7 7.7 43.7 32.4 43.7 60.1 0 34-26.4 61.5-59.1 62.4v16.8c0 9.2-7.4 16.6-16.6 16.6h-11.1c-9.2 0-16.6-7.4-16.6-16.6v-17c-15.5-.8-30.5-6.1-43-15.4-5.6-4.1-6.2-12.3-1.2-17.1l16.3-15.5c3.8-3.7 9.5-3.8 14-1 5.4 3.4 11.4 5.1 17.8 5.1h38.9c9 0 16.3-8.2 16.3-18.3 0-8.2-5-15.5-12.1-17.6l-62.3-18.7c-25.7-7.7-43.7-32.4-43.7-60.1.1-34 26.4-61.5 59.1-62.4zM480 352h-32.5c-19.6 26-44.6 47.7-73 64h63.8c5.3 0 9.6 3.6 9.6 8v16c0 4.4-4.3 8-9.6 8H73.6c-5.3 0-9.6-3.6-9.6-8v-16c0-4.4 4.3-8 9.6-8h63.8c-28.4-16.3-53.3-38-73-64H32c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32v-96c0-17.7-14.3-32-32-32z"></path></g>`
+    const DONATE_SVG = `<path d="M234.666667,341.333333 C234.666667,364.897483 215.564149,384 192,384 C168.435851,384 149.333333,364.897483 149.333333,341.333333 L234.666667,341.333333 M192,7.10542736e-15 C109.44,7.10542736e-15 42.6666667,76.3733333 42.6666667,170.666667 L42.6666667,219.52 L1.42108547e-14,341.333333 L106.666667,341.333333 C106.666667,388.461632 144.871701,426.666667 192,426.666667 C239.128299,426.666667 277.333333,388.461632 277.333333,341.333333 L384,341.333333 L341.333333,219.52 L341.333333,176.853333 C341.333333,96 294.186667,21.9733333 225.066667,6.18666667 C214.336364,2.79014004 203.232451,0.712633806 192,7.10542736e-15 Z M60.16,298.666667 L82.9866667,234.666667 L85.3333333,226.773333 L85.3333333,170.666667 C85.3333333,100.053333 133.12,42.6665446 192,42.6665446 C199.693665,42.6542739 207.3598,43.5856735 214.826667,45.44 C262.613333,57.1733333 298.666667,113.28 298.666667,175.786667 L298.666667,226.773333 L301.013333,233.6 L323.84,298.666667 L60.16,298.666667 Z"> </path>`
 
     if (DEBUG_MSG) console.log("[Chzzk Blocker] Start Chzzk Ads Remover");
     if (AD_BLOCK) removeAdvertise();
@@ -89,11 +88,12 @@
                     const [label, text] = button.childNodes;
                     const [labelImg, title] = label.childNodes;
                     labelImg.innerHTML = DONATE_SVG;
-                    labelImg.setAttribute("viewBox", "0 0 512 512");
+                    labelImg.setAttribute("viewBox", "0 0 415 415");
                     labelImg.setAttribute("fill", "#959DAE");
                     labelImg.style.padding = "0px 5px 0px 6px";
                     labelImg.style.width = "15px";
-                    title.innerHTML = `도네이션 <strong>${switchText}</strong>`;
+                    // title.innerHTML = `도네이션/구독알람 <strong>${switchText}</strong>`;
+                    title.innerHTML = `도네이션/구독 알람`;
                     text.innerHTML = `<strong>${switchText}</strong>`;
                     button.addEventListener("click", () => {
                         switchText = (switchText === "켜짐") ? "꺼짐" : "켜짐";
@@ -118,6 +118,14 @@
                     if (mutation.addedNodes[0]?.classList?.length === 2 && mutation.addedNodes[0]?.classList[1]?.includes("live_chatting_list_donation") && runDonateBlock === true) {
                         // 도네이션 div 탐색 시 실행 코드
                         if (DEBUG_MSG) console.log("[Chzzk Blocker] Detect Donation");
+                        const donation = mutation.addedNodes[0];
+                        // 치지직에서 체팅을 remove()하고 있으므로 하위요소와 스타일만 제거하여 지운것처럼 위장
+                        donation.innerHTML = "";
+                        donation.style.padding = "0";
+                    }
+                    if (mutation.addedNodes[0]?.classList?.length === 2 && mutation.addedNodes[0]?.classList[1]?.includes("live_chatting_list_subscription") && runDonateBlock === true) {
+                        // 구독 div 탐색 시 실행 코드
+                        if (DEBUG_MSG) console.log("[Chzzk Blocker] Detect Subscription");
                         const donation = mutation.addedNodes[0];
                         // 치지직에서 체팅을 remove()하고 있으므로 하위요소와 스타일만 제거하여 지운것처럼 위장
                         donation.innerHTML = "";
