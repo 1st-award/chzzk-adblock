@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chzzk Adblock
 // @namespace    http://tampermonkey.net/
-// @version      1.2.1
+// @version      1.2.2
 // @description  Chzzk Adblock
 // @author       1st_award
 // @match        https://chzzk.naver.com/*
@@ -98,7 +98,8 @@
                     button.addEventListener("click", () => {
                         switchText = (switchText === "켜짐") ? "꺼짐" : "켜짐";
                         text.innerHTML = `<strong>${switchText}</strong>`;
-                        title.innerHTML = `도네이션 <strong>${switchText}</strong>`;
+                        // title.innerHTML = `도네이션 <strong>${switchText}</strong>`;
+                        title.innerHTML = `도네이션/구독 알람`;
                         if (switchText === "켜짐") {
                             runDonateBlock = false;
                         } else {
